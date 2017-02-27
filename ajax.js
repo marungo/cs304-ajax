@@ -1,3 +1,7 @@
+/*
+Authors: MR Ngo and Jacki Hom
+ */
+
 function loadPresentations() {
 	$.post("http://cs.wellesley.edu/~cs304/homeworks/ruhlman-2014.php",
 			showPresentations, "json");
