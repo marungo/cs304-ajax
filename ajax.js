@@ -16,10 +16,10 @@ function showPresentations(pres) {
 	for (i=0; i< len; i++) {
 		var presentation = pres[i];
 		var clone = $('#presentation-template > .presentation').clone();
-		clone.find('.title').text(presentation.title);
-		clone.find('.authors').text(presentation.presenterNames);
-		clone.find('.location').text(presentation.location);
-		clone.find('.time').text(presentation.start_time);
+		clone.find('.title').html(presentation.title);
+		clone.find('.authors').html(presentation.presenterNames);
+		clone.find('.location').html(presentation.location);
+		clone.find('.time').html(presentation.start_time);
 		clone.attr('pid', presentation.pid);
 		presentations.append(clone);
 	}
@@ -39,13 +39,13 @@ function findPresentationWithPid(pid) {
 $("#pres-container").click(function(event) {
 	var pid = $(event.target).closest("div.presentation").attr('pid');
 	var pres = findPresentationWithPid(pid);
-	console.log(pres);
-	$('#dialog').find('.title').text(pres.title);
-	$('#dialog').find('.descrip').text(pres.description);
-	$('#dialog').find('.time').text(pres.start_time);
+	$('#dialog').find('.title').html(pres.title);
+	$('#dialog').find('.descrip').html(pres.description);
+	$('#dialog').find('.time').html(pres.start_time);
 	console.log($('#dialog'));
 	$('#dialog').modal();
 });
+
 
 loadPresentations();
 
