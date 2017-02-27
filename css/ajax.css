@@ -1,0 +1,20 @@
+body {
+  margin: 30px;
+}
+
+#presentations {
+  display: grid;
+  /*grid-template-columns: 100px 100px 100px;*/
+  grid-template-columns: 1fr 1fr 2fr;
+  grid-rows: 1fr 1fr 1fr;
+  background-color: #fff;
+  color: #444;
+}
+
+.presentation {
+  background-color: #444;
+  color: #fff;
+  border-radius: 10px;
+  padding: 50px;
+  font-size: 100%;
+}

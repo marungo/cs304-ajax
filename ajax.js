@@ -5,7 +5,7 @@ function loadPresentations() {
 
 var global_presentations;
 function showPresentations(pres) {
-	console.log(pres);
+	// console.log(pres);
 	global_presentations = pres;
 	var i, len = pres.length;
 	var presentations = $('<div>').addClass('presentations');
@@ -17,7 +17,6 @@ function showPresentations(pres) {
 		clone.find('.location').text(presentation.location);
 		clone.find('.time').text(presentation.start_time);
 		clone.attr('pid', presentation.pid);
-		console.log(clone);
 		presentations.append(clone);
 	}
 	$('#pres-container').append(presentations);
@@ -30,19 +29,18 @@ function findPresentationWithPid(pid) {
 		}
 	}
 	console.log("could not find presentation");
-	return global_presentations[0];
+	return null;
 }
-
-$("#success").dialog({
-  autoOpen: false
- });
 
 $("#pres-container").click(function(event) {
 	var pid = $(event.target).closest("div.presentation").attr('pid');
 	var pres = findPresentationWithPid(pid);
-	$('#success').find('.title').text(pres.title);
-	$('#success').find('.description').text(pres.description);
-	$("#success").dialog("open");
+	console.log(pres);
+	$('#dialog').find('.title').text(pres.title);
+	$('#dialog').find('.descrip').text(pres.description);
+	$('#dialog').find('.time').text(pres.start_time);
+	console.log($('#dialog'));
+	$('#dialog').modal();
 });
 
 loadPresentations();
