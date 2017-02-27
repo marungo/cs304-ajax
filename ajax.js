@@ -7,8 +7,7 @@ function loadPresentations() {
 			showPresentations, "json");
 }
 
-
-// Templating function
+// Templating in action!
 var global_presentations;
 function showPresentations(pres) {
 	// console.log(pres);
@@ -31,7 +30,7 @@ function showPresentations(pres) {
 		// add to big presentations class
 		presentations.append(clone);
 	}
-	
+
 	//finally, add to presentation container placed in ajax.html
 	$('#pres-container').append(presentations);
 }
@@ -59,7 +58,6 @@ $("#pres-container").click(function(event) {
 	console.log($('#dialog'));
 	$('#dialog').modal();
 });
-
 
 loadPresentations();
 
