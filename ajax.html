@@ -4,6 +4,7 @@
 		<link rel="stylesheet" type="text/css" href="css/ajax.css">
 		<link rel="stylesheet" type="text/css" href="css/jquery.modal.css"  media="screen" />
 	<style>
+		/* A couple of style overwrites for the css */
 		.modal {
 		    max-width: 800px;
 		}
@@ -14,6 +15,11 @@
 	</style>
 	</head>
 	<body>
+		<div id='title' height="50px" align="center">
+			<h1>Ruhlman Presentations</h1>
+		</div>
+
+		<!-- Template to design that will get copied over and over for each presentation -->
 		<div id='presentation-template' hidden="true">
 			<div href="#dialog" class ="presentation">
 				<p><h2><span class="title"></span></h2> by <span class="authors"></span>
@@ -21,15 +27,16 @@
 			</div>
 		</div>
 
+		<!-- Holds the presentation divs being dynamically produced by the jquery -->
 		<div id='pres-container'>
 		</div>
 
+		<!-- Modal that, when presentation div is clicked, will be populated with that 
+		presentation's title and description -->
 		<div id="dialog" class="modal" width="800px"> 
 		<!-- max-width='800px' -->
 			<h3><span class="title"></span></h3><br>
 			<span class="descrip"></span>
-			
-			<span class="time"></span>
 		</div>
 	</body>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
