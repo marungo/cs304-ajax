@@ -1,6 +1,8 @@
-/*
+/* 
 Authors: MR Ngo and Jacki Hom
- */
+CS304: Hwk3
+3/1/2017
+*/
 
 function loadPresentations() {
 	$.post("http://cs.wellesley.edu/~cs304/homeworks/ruhlman-2014.php",
@@ -21,21 +23,8 @@ function showPresentations(pres) {
         //clone.find('.authors').html(pres[i].presenterNames);
 		clone.find('.location').html(pres[i].location);
 		clone.find('.time').html(pres[i].start_time);
-        
-        /*
-        // get presenter names
-        names ='';
-        for (j = 0; j < pres[i].presenters.length-1; j++) {
-            names += pres[i].presenters[j].display_name + ", "
-        }
-        names += pres[i].presenters[pres[i].presenters.length-1].display_name;
-		clone.find('.authors').html(names);
-        */
-        
-		clone.find('.authors').html(getPresenters(pres[i].presenters));
-        
-        
-		
+		clone.find('.authors').html(getPresenters(pres[i].presenters)); // note: calls helper function
+        		
 		// make sure to add pid so that when div is clicked on,
 		// modal is populated with that presentation's div
 		clone.attr('pid', pres[i].pid);
