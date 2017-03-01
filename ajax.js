@@ -5,7 +5,7 @@ CS304: Hwk3
 */
 
 function loadPresentations() {
-	$.post("http://cs.wellesley.edu/~cs304/homeworks/ruhlman-2014.php",
+	$.post("https://cs.wellesley.edu/~cs304/homeworks/ruhlman-2014.php",
 			showPresentations, "json");
 }
 
