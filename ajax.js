@@ -1,6 +1,8 @@
-/*
+/* 
 Authors: MR Ngo and Jacki Hom
- */
+CS304: Hwk3
+3/1/2017
+*/
 
 function loadPresentations() {
 	$.post("https://cs.wellesley.edu/~cs304/homeworks/ruhlman-2014.json",
@@ -10,22 +12,21 @@ function loadPresentations() {
 // Templating in action!
 var global_presentations;
 function showPresentations(pres) {
-	// console.log(pres);
 	global_presentations = pres;
 	var i, len = pres.length;
 	var presentations = $('<div>').addClass('presentations');
-	for (i=0; i< len; i++) {		
-
+	for (i = 0; i < len; i++) {
 		// make a clone of the html template for each presentation
 		var clone = $('#presentation-template > .presentation').clone();
 		clone.find('.title').html(pres[i].title);
-		clone.find('.authors').html(pres[i].presenterNames);
+        //clone.find('.authors').html(pres[i].presenterNames);
 		clone.find('.location').html(pres[i].location);
 		clone.find('.time').html(pres[i].start_time);
-		
+		clone.find('.authors').html(getPresenters(pres[i].presenters)); // note: calls helper function
+        		
 		// make sure to add pid so that when div is clicked on,
 		// modal is populated with that presentation's div
-		clone.attr('pid', presentation.pid);
+		clone.attr('pid', pres[i].pid);
 		
 		// add to big presentations class
 		presentations.append(clone);
@@ -45,6 +46,17 @@ function findPresentationWithPid(pid) {
 	}
 	console.log("could not find presentation");
 	return null;
+}
+
+// Helper method to collect presenter names
+// This will be used to populate clone with neatly formatted presenter names
+function getPresenters(presenters) {
+    names ='';
+    for (j = 0; j < presenters.length-1; j++) {
+        names += presenters[j].display_name + ", "
+    }
+    names += presenters[presenters.length-1].display_name;
+	return names;
 }
 
 // NOTE: Because of the css of the modal, it made more sense to keep the
